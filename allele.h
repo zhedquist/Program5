@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 class Allele
@@ -12,12 +13,13 @@ class Allele
 	string varientType;
 
   public:
-	void alleleType(string seq, string varName, string varType);
-	void WriteAlleleToFile(ofstream &);
+	Allele();
+	Allele(string varName, string varType, string seq);
+	void WriteAlleleToFile(ofstream &ofs);
 	void setVarientName(string name);
-	void getVarientName();
+	string getVarientName();
 	void setVarientType(string type);
-	void getVarientType();
+	string getVarientType();
 	void setNucSeq(string seq);
-	void getNucSeq();
+	string getNucSeq();
 };

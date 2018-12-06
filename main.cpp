@@ -7,6 +7,9 @@
 #include <iostream>
 #include <string>
 #include "gene.h"
+#include "allele.h"
+#include "chromosome.h"
+#include "geneSequencer.h"
 using namespace std;
 
 int menuSelect()
@@ -26,47 +29,45 @@ int menuSelect()
 
 int main(int argc, char *argv[])
 {
-	// declare a chromosome Chromosome myChromosome;
-	Gene gset;
-
-	int selection = menuSelect();
-	if (selection == 1)
+	Chromosome myC;
+	GeneSequencer createGene;
+	int selection = 0;
+	while (selection != 6)
 	{
-		string trait, name, type1, type2, seq1, seq2, var1, var2;
-		cout << "What is the name of the new gene?" << endl;
-		getline(cin, name);
-		gset.setName(name);
-		cout << "What is the gene trait?" << endl;
-		getline(cin, trait);
-		gset.setTraitType(trait);
-		cout << "What is the allele 1 variant?" << endl;
-		getline(cin, var1);
-		cout << "What is the allele 1 type?" << endl;
-		geline(cin, type1);
-		cout << "What is the allele 1 nucleotide sequence?" << endl;
-		getline(cin, seq1);
-
-		//Allele a(traitName, ...);
-		//Allele b( ...);
-
-		//Gene g(a, b);
-		//myChromosome.ad
-	}
-	else if (selection == 2)
-	{
-	}
-	else if (selection == 3)
-	{
-	}
-	else if (selection == 4)
-	{
-	}
-	else if (selection == 5)
-	{
-	}
-	else
-	{
-		cout << "Goodbye" << endl;
+		selection = menuSelect();
+		char newGene = 'y';
+		string fileName;
+		if (selection == 1)
+		{
+			while (newGene == 'y')
+			{
+				myC = createGene.CreateChromosome();
+				cout << "Would you like to add a new gene?(y/n) ";
+				cin >> newGene;
+				cin.get();
+			}
+		}
+		else if (selection == 2)
+		{
+			myC.AnalyzeGenotype();
+		}
+		else if (selection == 3)
+		{
+			cout << "What file do you want to output to?";
+			getline(cin, fileName);
+			createGene.ExportChromosome(myC, fileName);
+			cout << "Exported" << endl;
+		}
+		else if (selection == 4)
+		{
+		}
+		else if (selection == 5)
+		{
+		}
+		else if (selection == 6)
+		{
+			cout << "Goodbye" << endl;
+		}
 	}
 	{
 		char c;

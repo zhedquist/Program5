@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "allele.h"
+#include <fstream>
 
 using namespace std;
 
@@ -16,10 +17,11 @@ class Gene
 
   public:
 	Gene();
-	Gene(Allele, Allele);
-	void createdGene(string a, string b);
+	Gene(Allele a, Allele b);
 	void setName(string n);
-	void getName();
+	string getName();
 	void setTraitType(string type);
-	void getTraitType();
+	string getTraitType();
+	void WriteToFile(ofstream &of);
+	Allele GetExpressedTrait();
 };
